@@ -4,7 +4,7 @@
  <h3>Issues faced & resolution:</h3>
  I kept getting this error: "Too many argument(s) . Got 2, expected exactly 1.", when using the Caporal Pacakage. I fixed this by changing the  outdated bits of the code from the previous version to this:
  
- `
+ ```
  program
     .version('1.0.0')
     .argument("[filename]", "This is the name of the file to be executed")
@@ -13,7 +13,7 @@
     })
 
 program.run(process.argv.slice(2))
-`
+```
 
 
 <h3>Technology used:</h3>
