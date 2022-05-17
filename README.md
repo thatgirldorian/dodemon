@@ -20,7 +20,6 @@ program.run(process.argv.slice(2))
 
 - JavaScript
 - GitHub
-- Netlify
 - The Chokidar package (detects file changes)
 - The Caporal package (generated help docs/commands)
 - The Lodash debounce package (helped with setting timer and debouncing)
