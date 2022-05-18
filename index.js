@@ -7,6 +7,7 @@ const chokidar = require('chokidar')
 const debounce = require('lodash.debounce')
 const program = require("@caporal/core").default
 const fs = require("fs")
+const { spawn } = require('child_process')
 
 //use the caporal package to build out our cli tool
 program
@@ -24,7 +25,7 @@ program
 
         //this will start up a user's code 
         const start = debounce(() => {
-                console.log("Starting the user's program")
+                spawn('node', [name], { stdio: 'inherit' })
         }, 100)
 
             //have chokidar send messages depending on what event is detected in our working directory
