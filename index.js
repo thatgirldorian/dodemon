@@ -11,22 +11,21 @@ const fs = require("fs")
 //use the caporal package to build out our cli tool
 program
     .version('1.0.0')
-    .argument("[filename]", "This is the name of the file to be executed.")
-    .action(async ({ filename }) => {
+    .argument('[filename]', "This is the name of the file to be executed.")
+    .action(async ({ filename, args }) => {
         //check if a filename is being provided
-        const name = filename || "index.js"
+        const name = (args.filename) || "index.js"
 
-        //check if the file exists
         try {
-            await access(name)
-        } catch {
-            console.error(`Could not find the file ${name}`)
+            await fs.promises.access(name)
+        } catch (err) {
+            throw new Error(`Could not find the file: ${name}`)
         }
 
         //this will start up a user's code 
-            const start = debounce(() => {
+        const start = debounce(() => {
                 console.log("Starting the user's program")
-            }, 100)
+        }, 100)
 
             //have chokidar send messages depending on what event is detected in our working directory
             chokidar.watch('.')
