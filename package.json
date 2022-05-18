@@ -23,6 +23,7 @@
   "dependencies": {
     "@caporal/core": "^2.0.2",
     "chokidar": "^3.5.3",
+    "cli-color": "^2.0.2",
     "lodash.debounce": "^4.0.8"
   }
 }

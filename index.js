@@ -8,6 +8,7 @@ const debounce = require('lodash.debounce')
 const program = require("@caporal/core").default
 const fs = require("fs")
 const { spawn } = require('child_process')
+var clc = require("cli-color");
 
 //use the caporal package to build out our cli tool
 program
@@ -23,9 +24,15 @@ program
             throw new Error(`Could not find the file: ${name}`)
         }
 
+        //add a process variable 
+        let proc;
         //this will start up a user's code 
         const start = debounce(() => {
-                spawn('node', [name], { stdio: 'inherit' })
+            if (proc) {
+                proc.kill()
+            }
+            console.log(clc.yellow(">>>>> Process started!"))
+            proc = spawn('node', [name], { stdio: 'inherit' })
         }, 100)
 
             //have chokidar send messages depending on what event is detected in our working directory
